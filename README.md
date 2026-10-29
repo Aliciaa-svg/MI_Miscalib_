@@ -18,5 +18,4 @@ bash scripts/run_pipeline.sh Qwen/Qwen2.5-3B-Instruct popqa cuda:0
 ## Acknowledgements
 
 `src/eap` is adapted from [EAP-IG](https://github.com/hannamw/EAP-IG)
-(Hanna et al., COLM 2024). Local changes: `pygraphviz` is imported lazily, `evaluate_graph`
-allocates its edge mask on the model's device, and `dataset.py` / `utils.py` are not included.
+(Hanna et al., COLM 2024).

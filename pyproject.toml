@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mi-miscalib"
+version = "0.1.0"
+description = "Wired for Overconfidence: circuit analysis of inflated verbalized confidence in LLMs"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.1",
+    "transformers>=4.45,<4.54",
+    "transformer_lens>=2.15,<3",
+    "accelerate>=0.30",
+    "datasets>=2.18",
+    "einops>=0.7",
+    "numpy>=1.26,<2",
+    "pandas>=2.0",
+    "matplotlib>=3.8",
+    "tqdm>=4.66",
+    "jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.3"]
+# Only needed for eap.graph.Graph.to_graphviz (requires the system graphviz library).
+viz = ["pygraphviz>=1.11"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+extend-exclude = ["src/eap"]  # vendored
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["mi_miscalib", "eap", "conftest"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
